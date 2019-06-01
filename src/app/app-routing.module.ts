@@ -4,8 +4,8 @@ import { AdminSharedModule } from 'projects/admin/src/app/app.module';
 import { DashboardSharedModule } from 'projects/dashboard/src/app/app.module';
 
 // App components
-import { NotFoundComponent } from './core/not-found.component';
-import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './core/components/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {

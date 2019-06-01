@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 // Import sub project inside core main app
 import { DashboardSharedModule } from '../../projects/dashboard/src/app/app.module';
 import { AdminSharedModule } from '../../projects/admin/src/app/app.module';
-import { HomeModule } from './home/home.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
