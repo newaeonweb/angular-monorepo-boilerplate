@@ -23,7 +23,7 @@ const providers = [];
 export class AppModule { }
 
 @NgModule({})
-export class DashboardSharedModule{
+export class DashboardSharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AppModule,
