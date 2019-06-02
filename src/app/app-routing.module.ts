@@ -5,12 +5,12 @@ import { DashboardSharedModule } from 'projects/dashboard/src/app/app.module';
 
 // App components
 import { NotFoundComponent } from './core/components/not-found.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeModule } from './pages/home/home.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'admin',
@@ -29,6 +29,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
+    HomeModule,
     AdminSharedModule.forRoot(),
     DashboardSharedModule.forRoot()
   ],
