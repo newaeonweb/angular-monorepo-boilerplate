@@ -20,10 +20,10 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('../../projects/dashboard/src/app/app.module').then(m => m.DashboardSharedModule)
   },
-  {
-    path: '**',
-    component: NotFoundComponent
-  }
+  // {
+  //   path: '**',
+  //   component: NotFoundComponent
+  // }
 ];
 
 @NgModule({
