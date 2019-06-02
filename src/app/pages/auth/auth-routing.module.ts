@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Only Auth related components here
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { NotFoundComponent } from 'src/app/core/components/not-found.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
