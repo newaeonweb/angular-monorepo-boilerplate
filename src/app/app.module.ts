@@ -12,7 +12,13 @@ import { AdminSharedModule } from '../../projects/admin/src/app/app.module';
 
 // Import application modules
 import { HomeModule } from './pages/home/home.module';
-import { AuthModule } from './pages/auth/auth.module';
+import { AuthModule } from './auth/auth.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './statemanagement';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './statemanagement/auth.effects';
+import { environment } from 'projects/admin/src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,11 @@ import { AuthModule } from './pages/auth/auth.module';
     HomeModule,
     AuthModule,
     DashboardSharedModule.forRoot(),
-    AdminSharedModule.forRoot()
+    AdminSharedModule.forRoot(),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AuthEffects]),
+    // EffectsModule.forFeature([AuthEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]

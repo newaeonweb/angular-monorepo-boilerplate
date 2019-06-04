@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { User } from '../_model/user';
+import { State, selectAuthState } from 'src/app/statemanagement/';
+import { Login } from 'src/app/statemanagement/auth.actions';
 
 @Component({
   selector: 'mab-login',
@@ -15,10 +17,15 @@ export class LoginComponent implements OnInit {
   getState: Observable<any>;
   errorMessage: string | null;
 
-  constructor() {}
+  constructor(private store: Store<State>) {
+    this.getState = store.pipe(select('auths'));
+  }
 
   ngOnInit() {
-
+    this.getState.subscribe((state) => {
+      console.log(state);
+      this.errorMessage = state.errorMessage;
+    });
   }
 
   onSubmit(): void {
@@ -27,6 +34,7 @@ export class LoginComponent implements OnInit {
       password: this.user.password
     };
     console.log(payload);
+    this.store.dispatch(new Login(payload));
   }
 
 }

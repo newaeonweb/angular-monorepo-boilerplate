@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { User } from '../auth/_model/user';
+import { User } from '../../auth/_model/user';
+import { Store, select } from '@ngrx/store';
+import { State } from 'src/app/statemanagement';
+import { LogOut } from 'src/app/statemanagement/auth.actions';
 
 @Component({
   selector: 'mab-app-home',
@@ -51,14 +54,22 @@ export class HomeComponent implements OnInit {
   user = null;
   errorMessage = null;
 
-  constructor() {}
+  constructor(private store: Store<State>) {
+    this.getState = store.pipe(select('auths'));
+  }
 
   ngOnInit() {
-
+    this.getState.subscribe((state) => {
+      console.log(state);
+      this.isAuthenticated = state.isAuthenticated;
+      this.user = state.user;
+      this.errorMessage = state.errorMessage;
+    });
   }
 
   logout(): void {
     console.log('exit');
+    this.store.dispatch(new LogOut());
   }
 
 }
