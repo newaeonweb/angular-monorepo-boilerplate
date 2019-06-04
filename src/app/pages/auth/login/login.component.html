@@ -1,3 +1,34 @@
-<p>
-  Core Application, login route works!
-</p>
+<div>
+<h1>Login</h1>
+    <hr><br>
+    <div *ngIf="errorMessage">
+      <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          [(ngModel)]="user.email"
+          name="email"
+          type="email"
+          required
+          class="form-control"
+          id="email"
+          placeholder="enter your email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          [(ngModel)]="user.password"
+          name="password"
+          type="password"
+          required
+          class="form-control"
+          id="password"
+          placeholder="enter a password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
