@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { User } from '../_model/user';
-import { State, selectAuthState } from 'src/app/statemanagement/';
+// NGRX State management
+import { Store, select } from '@ngrx/store';
+import { State } from 'src/app/statemanagement/';
 import { Login } from 'src/app/statemanagement/auth.actions';
+
+// App models
+import { User } from '../_model/user';
 
 @Component({
   selector: 'mab-login',
