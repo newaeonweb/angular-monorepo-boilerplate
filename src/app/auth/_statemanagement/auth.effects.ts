@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
-import { AuthenticationService } from '../_service/auth.service';
+import { AuthService } from '../_service/auth.service';
 import { AuthActionTypes, Login, LogInSuccess, LogInFailure } from './auth.actions';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ export class AuthEffects {
 
   constructor(
     private actions$: Actions,
-    private authService: AuthenticationService,
+    private authService: AuthService,
     private router: Router
     ) {}
 
