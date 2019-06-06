@@ -13,14 +13,6 @@ import { AdminSharedModule } from '../../projects/admin/src/app/app.module';
 // Import application modules
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './auth/auth.module';
-import { environment } from 'projects/admin/src/environments/environment';
-
-// NGRX State modules
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './auth/_statemanagement';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './auth/_statemanagement/auth.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -33,10 +25,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HomeModule,
     AuthModule,
     DashboardSharedModule.forRoot(),
-    AdminSharedModule.forRoot(),
-    StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AuthEffects]),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    AdminSharedModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

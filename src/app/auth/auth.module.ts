@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './auth-routing.module';
+
+// Application components
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+
+// Environment
+import { environment } from '../../environments/environment';
+
+// NGRX State modules
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './_statemanagement';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './_statemanagement/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -23,7 +29,10 @@ import { AuthEffects } from './_statemanagement/auth.effects';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AuthEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
 
   ]
 })
