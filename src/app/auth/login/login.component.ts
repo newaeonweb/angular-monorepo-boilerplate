@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 
 // NGRX State management
 import { Store, select } from '@ngrx/store';
-import { State } from 'src/app/auth/statemanagement';
-import { Login } from 'src/app/auth/statemanagement/auth.actions';
+import { State } from 'src/app/auth/_statemanagement';
+import { Login } from 'src/app/auth/_statemanagement/auth.actions';
 
 // App models
 import { User } from '../_model/user';

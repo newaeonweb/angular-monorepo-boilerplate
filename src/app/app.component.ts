@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './auth/_model/user';
 import { Store, select } from '@ngrx/store';
-import { State } from './auth/statemanagement';
-import { LogOut } from './auth/statemanagement/auth.actions';
+import { State } from './auth/_statemanagement';
+import { LogOut } from './auth/_statemanagement/auth.actions';
 
 @Component({
   selector: 'mab-root',

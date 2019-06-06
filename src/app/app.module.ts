@@ -17,9 +17,9 @@ import { environment } from 'projects/admin/src/environments/environment';
 
 // NGRX State modules
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './auth/statemanagement';
+import { reducers, metaReducers } from './auth/_statemanagement';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './auth/statemanagement/auth.effects';
+import { AuthEffects } from './auth/_statemanagement/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
