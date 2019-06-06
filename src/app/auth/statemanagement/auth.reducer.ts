@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Auth } from './auth.model';
 import { AuthActions, AuthActionTypes } from './auth.actions';
-import { User } from '../auth/_model/user';
+import { User } from '../_model/user';
 
 export interface AuthState extends EntityState<Auth> {
   // additional entities state properties

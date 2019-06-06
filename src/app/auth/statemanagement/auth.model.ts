@@ -1,4 +1,4 @@
-import { User } from '../auth/_model/user';
+import { User } from '../_model/user';
 
 export interface Auth {
   isAuthenticated: boolean;
