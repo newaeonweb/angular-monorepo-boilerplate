@@ -10,12 +10,12 @@ import * as fromAuth from './auth.reducer';
 
 export interface State {
 
-  auths: fromAuth.State;
+  auths: fromAuth.AuthState;
 }
 
 export const reducers: ActionReducerMap<State> = {
 
-  auths: fromAuth.reducer,
+  auths: fromAuth.authReducer,
 };
 
 export const selectAuthState = createFeatureSelector<State>('auths');

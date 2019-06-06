@@ -3,26 +3,23 @@ import { Auth } from './auth.model';
 import { AuthActions, AuthActionTypes } from './auth.actions';
 import { User } from '../auth/_model/user';
 
-export interface State extends EntityState<Auth> {
+export interface AuthState extends EntityState<Auth> {
   // additional entities state properties
-  // is a user authenticated?
   isAuthenticated: boolean;
-  // if authenticated, there should be a user object
   user: User | null;
-  // error message
   errorMessage: string | null;
 }
 
 export const adapter: EntityAdapter<Auth> = createEntityAdapter<Auth>();
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: AuthState = adapter.getInitialState({
   // additional entity state properties
   isAuthenticated: false,
   user: null,
   errorMessage: null
 });
 
-export function reducer( state = initialState, action: AuthActions ): State {
+export function authReducer( state = initialState, action: AuthActions ): AuthState {
   switch (action.type) {
     case AuthActionTypes.LoginSuccess: {
       return {

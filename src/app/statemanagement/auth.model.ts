@@ -1,3 +1,7 @@
+import { User } from '../auth/_model/user';
+
 export interface Auth {
-  id: string;
+  isAuthenticated: boolean;
+  user: User | null;
+  errorMessage: string | null;
 }
