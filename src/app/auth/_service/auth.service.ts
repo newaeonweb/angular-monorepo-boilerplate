@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_model/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private BASE_URL = 'http://localhost:1337';
+  private readonly API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +18,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    const url = `${this.BASE_URL}/login`;
+    const url = `${this.API_URL}/login`;
     return this.http.post<User>(url, {email, password});
   }
 

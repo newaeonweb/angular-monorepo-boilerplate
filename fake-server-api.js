@@ -10,11 +10,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-app.get('/ping', (req, res, next)  => {
+app.get('/api/ping', (req, res, next)  => {
   res.status(200).json('pong!');
 });
 
-app.post('/register', (req, res, next)  => {
+app.post('/api/register', (req, res, next)  => {
   if (req.body.email === 'test@test.com') {
     res.status(201).json({
       status: 'success',
@@ -27,7 +27,7 @@ app.post('/register', (req, res, next)  => {
   }
 });
 
-app.post('/login', (req, res, next) => {
+app.post('/api/login', (req, res, next) => {
   if (req.body.email === 'test@test.com') {
     res.status(200).json({
       status: 'success',
@@ -40,7 +40,7 @@ app.post('/login', (req, res, next) => {
   }
 });
 
-app.get('/status', (req, res, next)  => {
+app.get('/api/status', (req, res, next)  => {
   if (!(req.headers && req.headers.authorization)) {
     return res.status(400).json({
       status: 'error'
@@ -74,6 +74,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(1337, () => {
-  console.log('App listening on port 1337!');
+app.listen(8081, () => {
+  console.log('App listening on port 8081');
 });
