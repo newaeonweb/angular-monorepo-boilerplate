@@ -22,10 +22,7 @@ export const initialState: State = adapter.getInitialState({
   errorMessage: null
 });
 
-export function reducer(
-  state = initialState,
-  action: AuthActions
-): State {
+export function reducer( state = initialState, action: AuthActions ): State {
   switch (action.type) {
     case AuthActionTypes.LoginSuccess: {
       return {
