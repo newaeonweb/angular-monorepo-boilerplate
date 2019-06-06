@@ -8,16 +8,16 @@ import {
 import { environment } from '../../../environments/environment';
 import * as fromAuth from './auth.reducer';
 
-export interface State {
+export interface AppState {
 
   auths: fromAuth.AuthState;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<AppState> = {
 
   auths: fromAuth.authReducer,
 };
 
-export const selectAuthState = createFeatureSelector<State>('auths');
+export const selectAuthState = createFeatureSelector<AppState>('auths');
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
