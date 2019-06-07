@@ -43,7 +43,9 @@ app.post('/api/login', (req, res, next) => {
 app.get('/api/status', (req, res, next)  => {
   if (!(req.headers && req.headers.authorization)) {
     return res.status(400).json({
-      status: 'error'
+      status: 'error',
+      isAuthenticated: false,
+      errorMessage: 'Missing Token'
     });
   }
   // simulate token decoding
@@ -51,11 +53,19 @@ app.get('/api/status', (req, res, next)  => {
   const token = header[1];
   if (token === '1234567') {
     res.status(200).json({
-      status: 'success',
+        isAuthenticated: true,
+        user: {
+          email: 'test@test.com',
+          token: '1234567'
+        },
+        errorMessage: null
+
     });
   } else {
     res.status(401).json({
-      status: 'error'
+      status: 'error',
+      isAuthenticated: false,
+      errorMessage: 'Invalid Token'
     });
   }
 });
