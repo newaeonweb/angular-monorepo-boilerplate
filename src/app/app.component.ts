@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from './_models/user';
 import { Store, select } from '@ngrx/store';
 import { RootStoreState } from './root-store';
-import { LogOut } from './root-store/auth-store/actions';
+import { LogOut, CheckStatus } from './root-store/auth-store/actions';
 
 @Component({
   selector: 'mab-root',
@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch( new CheckStatus());
+
     this.getState.subscribe((state) => {
       console.log(state);
       this.isAuthenticated = state.isAuthenticated;

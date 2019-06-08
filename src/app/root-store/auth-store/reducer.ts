@@ -38,7 +38,8 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
       return initialState;
     }
 
-    case AuthActionTypes.CHECK_STATUS: {
+    case AuthActionTypes.CHECK_STATUS_SUCCESS: {
+      console.log(action.payload)
       return {
         ...state,
         isAuthenticated: true,
@@ -47,6 +48,13 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
           email: action.payload.email
         },
         errorMessage: null
+      };
+    }
+
+    case AuthActionTypes.CHECK_STATUS_FAIL: {
+      return {
+        ...state,
+        errorMessage: action.payload.error.error.errorMessage
       };
     }
 

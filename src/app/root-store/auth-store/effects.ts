@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import { AuthService } from '../../auth/_service/auth.service';
-import { AuthActionTypes, Login, LogInSuccess, LogInFailure } from './actions';
+import { AuthActionTypes, Login, LogInSuccess, LogInFailure, CheckStatusSuccess, CheckStatusFail } from './actions';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -61,13 +61,13 @@ export class AuthEffects {
     ofType(AuthActionTypes.CHECK_STATUS),
     switchMap(() => {
       return this.authService.checkStatus().pipe(
-        map((user) => {
-          console.log(user)
-          return new LogInSuccess({token: user.token, email: user.email});
+        map((res) => {
+          console.log('user', res)
+          return new CheckStatusSuccess({token: res.user.token, email: res.user.email});
         }),
         catchError((err) => {
           console.log(err);
-          return of(new LogInFailure({ error: err }));
+          return of(new CheckStatusFail({ error: err }));
         })
       );
     })

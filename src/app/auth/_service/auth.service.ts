@@ -51,7 +51,7 @@ export class AuthService {
 
   }
 
-  checkStatus(): Observable<User> {
+  checkStatus(): Observable<any> {
     console.log('fired')
     const url = `${this.API_URL}/status`;
     return this.http.get<any>(url).pipe(
