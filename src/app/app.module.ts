@@ -13,6 +13,7 @@ import { AdminSharedModule } from '../../projects/admin/src/app/app.module';
 // Import application modules
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './auth/auth.module';
+import { RootStoreModule } from './root-store/root-store.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthModule } from './auth/auth.module';
     HomeModule,
     AuthModule,
     DashboardSharedModule.forRoot(),
-    AdminSharedModule.forRoot()
+    AdminSharedModule.forRoot(),
+    RootStoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

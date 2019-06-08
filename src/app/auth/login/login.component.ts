@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 
 // NGRX State management
 import { Store, select } from '@ngrx/store';
-import { AppState } from 'src/app/auth/_statemanagement';
-import { Login } from 'src/app/auth/_statemanagement/auth.actions';
+import { RootStoreState } from '../../root-store';
+import { Login } from '../../root-store/auth-store/actions';
 
 // App models
 import { User } from '../../_models/user';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   getState: Observable<any>;
   errorMessage: string | null;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<RootStoreState.RootState>) {
     this.getState = store.pipe(select('auths'));
   }
 

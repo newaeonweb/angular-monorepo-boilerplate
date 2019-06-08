@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './_models/user';
 import { Store, select } from '@ngrx/store';
-import { AppState } from './auth/_statemanagement';
-import { LogOut } from './auth/_statemanagement/auth.actions';
+import { RootStoreState } from './root-store';
+import { LogOut } from './root-store/auth-store/actions';
 
 @Component({
   selector: 'mab-root',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   user: User = null;
   errorMessage = null;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<RootStoreState.RootState>) {
     this.getState = store.pipe(select('auths'));
   }
 
