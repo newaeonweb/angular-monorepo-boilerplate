@@ -7,7 +7,7 @@ import { AppState } from 'src/app/auth/_statemanagement';
 import { Login } from 'src/app/auth/_statemanagement/auth.actions';
 
 // App models
-import { User } from '../_model/user';
+import { User } from '../../_models/user';
 
 @Component({
   selector: 'mab-login',

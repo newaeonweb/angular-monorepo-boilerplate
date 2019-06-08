@@ -1,5 +1,5 @@
 import { AuthActions, AuthActionTypes } from './auth.actions';
-import { User } from '../_model/user';
+import { User } from '../../_models/user';
 
 export interface AuthState {
   isAuthenticated: boolean;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './auth/_model/user';
+import { User } from './_models/user';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './auth/_statemanagement';
 import { LogOut } from './auth/_statemanagement/auth.actions';
