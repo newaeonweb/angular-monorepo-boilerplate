@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { User } from '../_model/user';
 import { environment } from 'src/environments/environment';
+import { switchMap, tap, map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -50,9 +51,33 @@ export class AuthService {
 
   }
 
+  checkStatus(): Observable<User> {
+    console.log('fired')
+    const url = `${this.API_URL}/status`;
+    return this.http.get<any>(url).pipe(
+      // map((response) => {
+      //   console.log(response);
+      //   return response;
+      // }),
+      catchError(error => this.handleError(error))
+    );
+  }
+
   login(email: string, password: string): Observable<any> {
     const url = `${this.API_URL}/login`;
     return this.http.post<User>(url, {email, password});
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side error.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend error.
+        return throwError(error);
+    }
+    // return a custom error message
+    return throwError('Ohps something wrong happen here; please try again later.');
   }
 
 }

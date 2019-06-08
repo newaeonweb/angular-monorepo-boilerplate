@@ -21,7 +21,7 @@ export const initialState: AuthState = adapter.getInitialState({
 
 export function authReducer( state = initialState, action: AuthActions ): AuthState {
   switch (action.type) {
-    case AuthActionTypes.LoginSuccess: {
+    case AuthActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,
         isAuthenticated: true,
@@ -33,15 +33,27 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
       };
     }
 
-    case AuthActionTypes.LoginFailure: {
+    case AuthActionTypes.LOGIN_FAIL: {
       return {
         ...state,
         errorMessage: 'Incorrect email and/or password.'
       };
     }
 
-    case AuthActionTypes.Logout: {
+    case AuthActionTypes.LOGOUT: {
       return initialState;
+    }
+
+    case AuthActionTypes.CHECK_STATUS: {
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: {
+          token: action.payload.token,
+          email: action.payload.email
+        },
+        errorMessage: null
+      };
     }
 
     default: {
