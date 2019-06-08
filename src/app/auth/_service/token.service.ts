@@ -25,29 +25,29 @@ export class TokenService implements HttpInterceptor {
           'Content-Type': 'application/json'
         }
       });
-      console.log('interceptor running with new headers');
+      console.log('Got token, attached to new headers');
 
-      return next.handle(authRequest);
-      // .pipe(
-      //   tap((event: HttpEvent<any>) => {
-      //     if (event instanceof HttpResponse) {
-      //       // Response wiht HttpResponse type
-      //       console.log('TAP function', event);
+      return next.handle(authRequest)
+      .pipe(
+        tap((event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            // Response wiht HttpResponse type
+            console.log('TAP function', event);
 
-      //     }
-      //   }, (err: any) => {
-      //     console.log(err);
-      //     if (err instanceof HttpErrorResponse) {
-      //       if (err.status === 401) {
-      //         localStorage.removeItem('token');
-      //         this.router.navigate(['/']);
-      //       }
-      //     }
-      //   })
-      // );
+          }
+        }, (err: any) => {
+          console.log(err);
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              localStorage.removeItem('token');
+              this.router.navigate(['/']);
+            }
+          }
+        })
+      );
 
     } else {
-      console.log('interceptor without changes');
+      console.log('No token forward request');
       return next.handle(request);
     }
 
