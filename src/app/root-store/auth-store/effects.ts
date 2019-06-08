@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable, of } from 'rxjs';
+import { Observable, of, EMPTY } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import { AuthService } from '../../auth/_service/auth.service';
@@ -60,16 +60,20 @@ export class AuthEffects {
   CheckStatus: Observable<any> = this.actions$.pipe(
     ofType(AuthActionTypes.CHECK_STATUS),
     switchMap(() => {
-      return this.authService.checkStatus().pipe(
-        map((res) => {
-          console.log('user', res)
-          return new CheckStatusSuccess({token: res.user.token, email: res.user.email});
-        }),
-        catchError((err) => {
-          console.log(err);
-          return of(new CheckStatusFail({ error: err }));
-        })
-      );
+      if (this.authService.getToken()) {
+        return this.authService.checkStatus().pipe(
+          map((res) => {
+            console.log('user', res)
+            return new CheckStatusSuccess({token: res.user.token, email: res.user.email});
+          }),
+          catchError((err) => {
+            console.log(err);
+            return of(new CheckStatusFail({ error: err }));
+          })
+        );
+      } else {
+        return EMPTY;
+      }
     })
   );
 
