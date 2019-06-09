@@ -54,7 +54,7 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
     case AuthActionTypes.CHECK_STATUS_FAIL: {
       return {
         ...state,
-        errorMessage: action.payload.error.error.errorMessage
+        errorMessage: action.payload.error
       };
     }
 
