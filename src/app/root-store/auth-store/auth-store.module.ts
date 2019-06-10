@@ -10,7 +10,7 @@ import { authReducer } from './reducer';
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature('auths', authReducer),
+    StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],
   providers: [AuthEffects],

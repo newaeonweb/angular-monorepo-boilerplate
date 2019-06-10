@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   errorMessage = null;
 
   constructor(private store: Store<RootStoreState.RootState>) {
-    this.getState = store.pipe(select('auths'));
+    this.getState = store.pipe(select('auth'));
   }
 
   ngOnInit() {

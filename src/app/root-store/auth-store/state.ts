@@ -9,14 +9,14 @@ import { environment } from '../../../environments/environment';
 import * as fromAuth from './reducer';
 
 export interface AppState {
-  auths: fromAuth.AuthState;
+  auth: fromAuth.AuthState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  auths: fromAuth.authReducer,
+  auth: fromAuth.authReducer,
 };
 
-export const selectAuthState = createFeatureSelector<AppState>('auths');
+export const selectAuthState = createFeatureSelector<AppState>('auth');
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? []

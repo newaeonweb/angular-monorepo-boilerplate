@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string | null;
 
   constructor(private store: Store<RootStoreState.RootState>) {
-    this.getState = store.pipe(select('auths'));
+    this.getState = store.pipe(select('auth'));
   }
 
   ngOnInit() {
