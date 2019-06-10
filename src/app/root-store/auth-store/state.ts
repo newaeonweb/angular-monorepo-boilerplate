@@ -16,8 +16,8 @@ export const reducers: ActionReducerMap<AppState> = {
   auth: fromAuth.authReducer,
 };
 
-export const selectAuthState = createFeatureSelector<AppState>('auth');
-
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? []
   : [];
+
+export const selectAuthState = createFeatureSelector<AppState>('auth');
