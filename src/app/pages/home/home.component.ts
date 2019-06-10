@@ -3,18 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'mab-app-home',
   template: `
-  <p>
-    Core Application, home route works!
-  </p>
+    <p>
+      Core Application, home route works!
+    </p>
   `,
-  styles: []
+  styles: [],
 })
 export class HomeComponent implements OnInit {
-
   constructor() {}
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 }

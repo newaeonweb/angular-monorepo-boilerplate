@@ -12,23 +12,14 @@ import { RegisterComponent } from './register/register.component';
 import { TokenService } from './_service/token.service';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    AuthRoutingModule
-
-  ],
+  declarations: [LoginComponent, RegisterComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, AuthRoutingModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenService,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

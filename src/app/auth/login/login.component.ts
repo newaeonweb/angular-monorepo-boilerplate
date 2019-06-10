@@ -12,10 +12,9 @@ import { User } from '../../_models/user';
 @Component({
   selector: 'mab-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   user: User = new User();
   getState: Observable<any>;
   errorMessage: string | null;
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getState.subscribe((state) => {
+    this.getState.subscribe(state => {
       console.log(state);
       this.errorMessage = state.errorMessage;
     });
@@ -34,10 +33,9 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     const payload = {
       email: this.user.email,
-      password: this.user.password
+      password: this.user.password,
     };
     console.log(payload);
     this.store.dispatch(new Login(payload));
   }
-
 }

@@ -16,9 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { RootStoreModule } from './root-store/root-store.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,9 +25,9 @@ import { RootStoreModule } from './root-store/root-store.module';
     AuthModule,
     DashboardSharedModule.forRoot(),
     AdminSharedModule.forRoot(),
-    RootStoreModule
+    RootStoreModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

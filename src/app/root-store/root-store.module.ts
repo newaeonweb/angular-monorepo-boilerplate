@@ -13,9 +13,11 @@ import { environment } from 'src/environments/environment';
     AuthStoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument({
-      maxAge: 25
-    }) : []
-  ]
+    !environment.production
+      ? StoreDevtoolsModule.instrument({
+          maxAge: 25,
+        })
+      : [],
+  ],
 })
-export class RootStoreModule { }
+export class RootStoreModule {}

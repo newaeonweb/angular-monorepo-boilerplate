@@ -11,8 +11,8 @@ import { authReducer } from './reducer';
   imports: [
     CommonModule,
     StoreModule.forFeature('auths', authReducer),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
   ],
-  providers: [AuthEffects]
+  providers: [AuthEffects],
 })
-export class AuthStoreModule { }
+export class AuthStoreModule {}

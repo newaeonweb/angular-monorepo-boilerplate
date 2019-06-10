@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { User } from '../../_models/user';
 import { environment } from 'src/environments/environment';
 import { switchMap, tap, map, catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private readonly API_URL = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getToken(): string {
     return localStorage.getItem('token');
   }
 
   setToken(token: string): void {
-    return localStorage.setItem('token', token );
+    return localStorage.setItem('token', token);
   }
 
   removeToken(): void {
@@ -38,21 +41,20 @@ export class AuthService {
   checkToken() {
     const token = this.getToken();
     if (token) {
-      console.log('yes')
+      console.log('yes');
       const httpOptions = {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        })
+          'Content-Type': 'application/json',
+        }),
       };
       const url = `${this.API_URL}/status`;
       return this.http.get(url, httpOptions);
     }
-
   }
 
   checkStatus(): Observable<any> {
-    console.log('fired')
+    console.log('fired');
     const url = `${this.API_URL}/token-refresh`;
     return this.http.get<any>(url).pipe(
       // map((response) => {
@@ -65,7 +67,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const url = `${this.API_URL}/login`;
-    return this.http.post<User>(url, {email, password});
+    return this.http.post<User>(url, { email, password });
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -74,10 +76,11 @@ export class AuthService {
       console.error('An error occurred:', error.error.message);
     } else {
       // The backend error.
-        return throwError(error);
+      return throwError(error);
     }
     // return a custom error message
-    return throwError('Ohps something wrong happen here; please try again later.');
+    return throwError(
+      'Ohps something wrong happen here; please try again later.'
+    );
   }
-
 }

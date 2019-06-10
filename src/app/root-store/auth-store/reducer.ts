@@ -10,10 +10,13 @@ export interface AuthState {
 export const initialState: AuthState = {
   isAuthenticated: false,
   user: null,
-  errorMessage: null
+  errorMessage: null,
 };
 
-export function authReducer( state = initialState, action: AuthActions ): AuthState {
+export function authReducer(
+  state = initialState,
+  action: AuthActions
+): AuthState {
   switch (action.type) {
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
@@ -21,16 +24,16 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: action.payload.email
+          email: action.payload.email,
         },
-        errorMessage: null
+        errorMessage: null,
       };
     }
 
     case AuthActionTypes.LOGIN_FAIL: {
       return {
         ...state,
-        errorMessage: 'Incorrect email and/or password.'
+        errorMessage: 'Incorrect email and/or password.',
       };
     }
 
@@ -39,22 +42,22 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
     }
 
     case AuthActionTypes.CHECK_STATUS_SUCCESS: {
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: action.payload.email
+          email: action.payload.email,
         },
-        errorMessage: null
+        errorMessage: null,
       };
     }
 
     case AuthActionTypes.CHECK_STATUS_FAIL: {
       return {
         ...state,
-        errorMessage: action.payload.error
+        errorMessage: action.payload.error,
       };
     }
 
@@ -63,4 +66,3 @@ export function authReducer( state = initialState, action: AuthActions ): AuthSt
     }
   }
 }
-

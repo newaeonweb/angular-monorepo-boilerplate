@@ -10,12 +10,11 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
-
   constructor(
     private actions$: Actions,
     private authService: AuthService,
     private router: Router
-    ) {}
+  ) {}
 
   @Effect()
   LogIn: Observable<any> = this.actions$.pipe(
@@ -23,22 +22,24 @@ export class AuthEffects {
     map((action: fromAuth.Login) => action.payload),
     switchMap(payload => {
       return this.authService.login(payload.email, payload.password).pipe(
-        map((user) => {
-          return new fromAuth.LogInSuccess({token: user.token, email: payload.email});
+        map(user => {
+          return new fromAuth.LogInSuccess({
+            token: user.token,
+            email: payload.email,
+          });
         }),
-        catchError((err) => {
+        catchError(err => {
           console.log(err);
           return of(new fromAuth.LogInFailure({ error: err }));
         })
       );
-
     })
   );
 
   @Effect({ dispatch: false })
   LogInSuccess: Observable<any> = this.actions$.pipe(
     ofType(fromAuth.AuthActionTypes.LOGIN_SUCCESS),
-    tap((user) => {
+    tap(user => {
       localStorage.setItem('token', user.payload.token);
       this.router.navigateByUrl('/');
     })
@@ -52,7 +53,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   public LogOut: Observable<any> = this.actions$.pipe(
     ofType(fromAuth.AuthActionTypes.LOGOUT),
-    tap((user) => {
+    tap(user => {
       localStorage.removeItem('token');
     })
   );
@@ -63,11 +64,14 @@ export class AuthEffects {
     switchMap(() => {
       if (this.authService.getToken()) {
         return this.authService.checkStatus().pipe(
-          map((res) => {
-            console.log('user', res)
-            return new fromAuth.CheckStatusSuccess({token: res.token, email: res.user.email});
+          map(res => {
+            console.log('user', res);
+            return new fromAuth.CheckStatusSuccess({
+              token: res.token,
+              email: res.user.email,
+            });
           }),
-          catchError((err) => {
+          catchError(err => {
             console.log(err);
             return of(new fromAuth.CheckStatusFail(err.error));
           })
@@ -77,6 +81,4 @@ export class AuthEffects {
       }
     })
   );
-
-
 }

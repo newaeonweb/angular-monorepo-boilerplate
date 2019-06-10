@@ -8,7 +8,7 @@ import { LogOut, CheckStatus } from './root-store/auth-store/actions';
 @Component({
   selector: 'mab-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'monorepo-angular-boilerplate';
@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch( new CheckStatus());
+    this.store.dispatch(new CheckStatus());
 
-    this.getState.subscribe((state) => {
+    this.getState.subscribe(state => {
       console.log(state);
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
@@ -36,5 +36,4 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.store.dispatch(new LogOut());
   }
-
 }
