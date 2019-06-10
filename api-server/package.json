@@ -1,0 +1,25 @@
+{
+  "name": "jwtnewaeonweserver",
+  "version": "1.0.0",
+  "description": "JSON-SERVER API with JWT Authentication and ApiDoc",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "docs": "./node_modules/.bin/apidoc -f server.js -o public/apidoc/"
+  },
+  "author": "Fernando Monteiro",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^6.0.1",
+    "json-server": "^0.14.2",
+    "jsonwebtoken": "^8.3.0",
+    "lowdb": "^1.0.0",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.7",
+    "nodemon": "^1.19.0"
+  }
+}
