@@ -53,7 +53,7 @@ export class AuthService {
 
   checkStatus(): Observable<any> {
     console.log('fired')
-    const url = `${this.API_URL}/status`;
+    const url = `${this.API_URL}/token-refresh`;
     return this.http.get<any>(url).pipe(
       // map((response) => {
       //   console.log(response);

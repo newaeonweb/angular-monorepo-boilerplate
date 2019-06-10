@@ -65,7 +65,7 @@ export class AuthEffects {
         return this.authService.checkStatus().pipe(
           map((res) => {
             console.log('user', res)
-            return new fromAuth.CheckStatusSuccess({token: res.user.token, email: res.user.email});
+            return new fromAuth.CheckStatusSuccess({token: res.token, email: res.user.email});
           }),
           catchError((err) => {
             console.log(err);
