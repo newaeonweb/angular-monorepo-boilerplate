@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/app/root-store/auth-store/reducer';
-import { selectIsLoggedIn } from 'src/app/root-store/auth-store/state';
+import { getIsAuthenticated } from 'src/app/root-store/auth-store/state';
 import { take, mergeMap, map } from 'rxjs/operators';
 
 @Injectable({
@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate {
   }
 
   checkStoreAuth() {
-    return this.store.select(selectIsLoggedIn).pipe(take(1));
+    return this.store.select(getIsAuthenticated).pipe(take(1));
   }
 
   checkApiAuth() {
