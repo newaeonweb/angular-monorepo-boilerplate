@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/app/root-store/auth-store/reducer';
-import { getIsAuthenticated } from 'src/app/root-store/auth-store/state';
+import { getIsAuthenticated } from 'src/app/root-store/auth-store/selectors';
 import { take, mergeMap, map } from 'rxjs/operators';
 
 @Injectable({
