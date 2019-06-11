@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Observable, of } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AuthState } from 'src/app/root-store/auth-store/reducer';
 import { selectIsLoggedIn } from 'src/app/root-store/auth-store/state';
-import { tap, take, mergeMap, map } from 'rxjs/operators';
+import { take, mergeMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
