@@ -30,7 +30,6 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    // get the token
     const token: string = this.getToken();
     if (token) {
       return true;
@@ -38,20 +37,20 @@ export class AuthService {
     return false;
   }
 
-  checkToken() {
-    const token = this.getToken();
-    if (token) {
-      console.log('yes');
-      const httpOptions = {
-        headers: new HttpHeaders({
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        }),
-      };
-      const url = `${this.API_URL}/status`;
-      return this.http.get(url, httpOptions);
-    }
-  }
+  // checkToken() {
+  //   const token = this.getToken();
+  //   if (token) {
+  //     console.log('yes');
+  //     const httpOptions = {
+  //       headers: new HttpHeaders({
+  //         Authorization: `Bearer ${token}`,
+  //         'Content-Type': 'application/json',
+  //       }),
+  //     };
+  //     const url = `${this.API_URL}/status`;
+  //     return this.http.get(url, httpOptions);
+  //   }
+  // }
 
   checkStatus(): Observable<any> {
     console.log('fired');
