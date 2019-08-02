@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dashboard:serve": "ng serve dashboard -o --port 3001",
+    "admin:serve": "ng serve admin -o --port 3002",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

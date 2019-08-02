@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.getState.subscribe(state => {
-      console.log(state);
       this.errorMessage = state.errorMessage;
     });
   }
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
       email: this.user.email,
       password: this.user.password,
     };
-    console.log(payload);
     this.store.dispatch(new Login(payload));
   }
 }

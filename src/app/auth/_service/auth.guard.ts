@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     return this.checkStoreAuth().pipe(
       mergeMap(storeAuth => {
-        console.log('store', storeAuth);
+        // Check authentication
         if (storeAuth) {
           return of(true);
         }
@@ -40,10 +40,12 @@ export class AuthGuard implements CanActivate {
   }
 
   checkStoreAuth() {
+    // using Redux selectors
     return this.store.select(getIsAuthenticated).pipe(take(1));
   }
 
   checkApiAuth() {
+    // using simple service
     return of(this.authService.isAuthenticated());
   }
 }

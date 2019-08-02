@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { User } from '../../_models/user';
 import { environment } from 'src/environments/environment';
-import { switchMap, tap, map, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -37,23 +33,8 @@ export class AuthService {
     return false;
   }
 
-  // checkToken() {
-  //   const token = this.getToken();
-  //   if (token) {
-  //     console.log('yes');
-  //     const httpOptions = {
-  //       headers: new HttpHeaders({
-  //         Authorization: `Bearer ${token}`,
-  //         'Content-Type': 'application/json',
-  //       }),
-  //     };
-  //     const url = `${this.API_URL}/status`;
-  //     return this.http.get(url, httpOptions);
-  //   }
-  // }
-
   checkStatus(): Observable<any> {
-    console.log('fired');
+    console.warn('fired on refresh page');
     const url = `${this.API_URL}/token-refresh`;
     return this.http.get<any>(url).pipe(
       // map((response) => {
