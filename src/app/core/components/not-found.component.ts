@@ -7,13 +7,10 @@ import { Component, OnInit } from '@angular/core';
       not-found works!
     </p>
   `,
-  styles: []
+  styles: [],
 })
 export class NotFoundComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

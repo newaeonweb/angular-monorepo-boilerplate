@@ -10,15 +10,22 @@ import { HomeModule } from './pages/home/home.module';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'admin',
-    loadChildren: () => import('../../projects/admin/src/app/app.module').then(m => m.AdminSharedModule)
+    loadChildren: () =>
+      import('../../projects/admin/src/app/app.module').then(
+        m => m.AdminSharedModule
+      ),
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('../../projects/dashboard/src/app/app.module').then(m => m.DashboardSharedModule)
+    loadChildren: () =>
+      import('../../projects/dashboard/src/app/app.module').then(
+        m => m.DashboardSharedModule
+      ),
   },
   // {
   //   path: '**',
@@ -31,8 +38,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HomeModule,
     AdminSharedModule.forRoot(),
-    DashboardSharedModule.forRoot()
+    DashboardSharedModule.forRoot(),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
