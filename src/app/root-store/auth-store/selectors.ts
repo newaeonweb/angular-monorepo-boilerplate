@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAuth from './reducer';
 
+// Example on how to use selectors
 export const selectAuthState = createFeatureSelector<fromAuth.AuthState>(
   'auth'
 );

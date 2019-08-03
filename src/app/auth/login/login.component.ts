@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SubscriptionLike } from 'rxjs';
 
 // NGRX State management
 import { Store, select } from '@ngrx/store';
@@ -14,17 +15,19 @@ import { User } from '../../_models/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   user: User = new User();
   getState: Observable<any>;
   errorMessage: string | null;
+
+  subscription: SubscriptionLike;
 
   constructor(private store: Store<AuthState>) {
     this.getState = store.pipe(select('auth'));
   }
 
   ngOnInit() {
-    this.getState.subscribe(state => {
+    this.subscription = this.getState.subscribe(state => {
       this.errorMessage = state.errorMessage;
     });
   }
@@ -35,5 +38,9 @@ export class LoginComponent implements OnInit {
       password: this.user.password,
     };
     this.store.dispatch(new Login(payload));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+// Import applications
 import { AdminSharedModule } from 'projects/admin/src/app/app.module';
 import { DashboardSharedModule } from 'projects/dashboard/src/app/app.module';
 

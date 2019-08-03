@@ -5,17 +5,17 @@ import { HomeComponent } from './home.component';
 const routes: Routes = [
   {
     path: 'admin',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: '',
     redirectTo: 'admin',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}

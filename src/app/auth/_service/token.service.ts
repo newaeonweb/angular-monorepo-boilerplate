@@ -23,7 +23,7 @@ export class TokenService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token: string = this.authService.getToken();
-
+    // Add token to header if exist
     if (token) {
       const authRequest = request.clone({
         setHeaders: {

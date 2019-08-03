@@ -4,7 +4,6 @@ import { Observable, of, EMPTY } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import { AuthService } from '../../auth/_service/auth.service';
-// import { AuthActionTypes, Login, LogInSuccess, LogInFailure, CheckStatusSuccess, CheckStatusFail } from './actions';
 import * as fromAuth from './actions';
 import { Router } from '@angular/router';
 
@@ -53,7 +52,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   public LogOut: Observable<any> = this.actions$.pipe(
     ofType(fromAuth.AuthActionTypes.LOGOUT),
-    tap(user => {
+    tap(() => {
       localStorage.removeItem('token');
     })
   );
@@ -65,14 +64,12 @@ export class AuthEffects {
       if (this.authService.getToken()) {
         return this.authService.checkStatus().pipe(
           map(res => {
-            console.log('user', res);
             return new fromAuth.CheckStatusSuccess({
               token: res.token,
               email: res.user.email,
             });
           }),
           catchError(err => {
-            console.log(err);
             return of(new fromAuth.CheckStatusFail(err.error));
           })
         );
