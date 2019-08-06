@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/_service/auth.service';
 import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/app/root-store/auth-store/reducer';
