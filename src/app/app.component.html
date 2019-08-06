@@ -9,15 +9,33 @@
   <div *ngIf="isAuthenticated; then doSomething; else doSomethingElse;"></div>
     <ng-template #doSomething>
       <p>You logged in <em>{{user.email}}!</em></p>
-      <a routerLink="/">Home</a> |
-      <a routerLink="/admin">Admin</a> |
-      <a routerLink="/dashboard">Dashboard</a> |
-      <a routerLink="" (click)="logout()">Logout</a>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" (click)="logout()">Logout</a>
+        </li>
+      </ul>
     </ng-template>
     <ng-template #doSomethingElse>
-      <a routerLink="/">Home</a> |
-      <a routerLink="/login">Login</a> |
-      <a routerLink="/register">Register</a>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+      </ul>
     </ng-template>
   <div>
 
